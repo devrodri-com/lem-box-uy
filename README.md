@@ -79,7 +79,7 @@ Este README se irá actualizando con cada fase del proyecto.
 
 ---
 
-## 📝 Prompt de desarrollo
+## 📝 Desarrollo
 
 El proyecto LEM-BOX V2 está diseñado con un enfoque mobile-first, utilizando Next.js 15 con App Router, TypeScript y TailwindCSS para mantener un código moderno, escalable y optimizado. Se ha implementado un branding oscuro con colores clave: verde oscuro (#02120F) para fondos y naranja vibrante (#EB6619) para acentos y llamadas a la acción.
 
