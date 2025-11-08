@@ -8,6 +8,7 @@ import NavbarMobile from "@/components/hooks/NavbarMobile";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 import Analytics from "@/components/Analytics";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -98,7 +99,9 @@ export default function RootLayout({
                   gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', { anonymize_ip: true });
                 `}
               </Script>
-              <Analytics />
+              <Suspense fallback={null}>
+                <Analytics />
+              </Suspense>
             </>
           )}
           <Header />
