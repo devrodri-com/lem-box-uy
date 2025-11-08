@@ -6,6 +6,8 @@ import "./globals.css";
 import NavbarDesktop from "@/components/hooks/NavbarDesktop";
 import NavbarMobile from "@/components/hooks/NavbarMobile";
 import Footer from "@/components/Footer";
+import Script from "next/script";
+import Analytics from "@/components/Analytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -82,6 +84,23 @@ export default function RootLayout({
     <html lang="es">
       <body className="antialiased">
         <>
+          {process.env.NEXT_PUBLIC_GA_ID && (
+            <>
+              <Script
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+                strategy="afterInteractive"
+              />
+              <Script id="ga-init" strategy="afterInteractive">
+                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);} 
+                  gtag('js', new Date());
+                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', { anonymize_ip: true });
+                `}
+              </Script>
+              <Analytics />
+            </>
+          )}
           <Header />
           {children}
           <Footer />
