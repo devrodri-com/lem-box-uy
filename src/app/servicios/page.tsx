@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Servicios | LEM-BOX",
   description:
-    "Servicios logísticos integrales en EE.UU. y envíos internacionales. Infraestructura en Miami, servicios personalizados, fulfillment 3PL y despachos a Uruguay y dentro de EE.UU.",
+    "Servicios logísticos integrales en EE.UU. y envíos personales desde Miami a Uruguay. Infraestructura en Miami, fulfillment 3PL y despachos a Uruguay bajo régimen de franquicia aduanera vigente y dentro de EE.UU.",
 };
 
 export default function ServiciosPage() {
@@ -23,7 +23,7 @@ export default function ServiciosPage() {
             Servicios logísticos integrales en EE.UU. y envíos internacionales
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-[15px] leading-relaxed text-emerald-100/80">
-            Desde nuestro hub en Miami, ofrecemos soluciones de almacenamiento, fulfillment, consolidación y logística personalizada para tu negocio.
+            Desde nuestro hub en Miami, ofrecemos almacenamiento, fulfillment, consolidación y logística personalizada para tu negocio, además de envíos personales hacia Uruguay bajo normativa aduanera vigente.
           </p>
         </div>
       </section>
@@ -104,20 +104,23 @@ export default function ServiciosPage() {
         <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           <div className="md:col-span-5">
             <h2 className="text-2xl md:text-3xl font-semibold text-white">
-              Envíos internacionales y domésticos
+              Envíos a Uruguay y logística doméstica
             </h2>
             <p className="mt-3 text-[15px] leading-relaxed text-emerald-100/80 max-w-prose">
-              Despachos adaptados a tu mercado. Llegamos a tus clientes dentro y fuera de EE.UU. sin fricción.
+              Despachos adaptados a tu mercado y a la normativa de cada destino. Gestionamos envíos personales desde Miami a Uruguay bajo régimen de franquicia, y logística doméstica dentro de EE.UU.
             </p>
           </div>
           <div className="md:col-span-7">
             <div className="mb-3 h-px w-10 bg-emerald-300/20"></div>
             <ul className="space-y-2 text-sm leading-relaxed text-emerald-100/85">
-              <li>• Envíos semanales a Uruguay, sin mínimos de carga</li>
+              <li>• Envíos personales a Uruguay bajo régimen de franquicia (hasta 3 envíos/año, valor menor a USD 200 y hasta 20 kg por envío, uso personal)</li>
               <li>• Entregas rápidas en todo EE.UU. con tarifas competitivas</li>
               <li>• Logística inversa: devoluciones o reenvíos a proveedores o terceros</li>
-              <li>• Flujo de trabajo ajustado a cada cliente</li>
+              <li>• Flujo de trabajo ajustado a cada cliente, con asesoría sobre restricciones y requisitos de Aduanas Uruguay</li>
             </ul>
+            <p className="mt-4 text-xs text-emerald-100/65 max-w-prose">
+              Los envíos hacia Uruguay se realizan siempre dentro de los límites de franquicia personal y demás regímenes aduaneros permitidos. La información es orientativa y no sustituye la normativa oficial de la Dirección Nacional de Aduanas.
+            </p>
           </div>
         </div>
       </section>

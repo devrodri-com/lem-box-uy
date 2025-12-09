@@ -27,11 +27,14 @@ export default function Hero() {
       <div className="absolute inset-0 -z-10 bg-black/30" />
 
       <div className="px-6 w-full max-w-7xl">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight text-white max-w-[18ch] mx-auto">
-          Tu puente entre EE.UU. y Uruguay
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight text-white max-w-[28ch] mx-auto">
+          Envíos personales desde Miami a Uruguay
         </h1>
-        <p className="mt-5 text-white/80 max-w-[48ch] mx-auto leading-relaxed">
-          Recepción y consolidación en Miami; ahorrás volumen y recibís en Uruguay en tiempo y forma. Atención humana y seguimiento claro.
+        <p className="mt-5 text-white/80 max-w-[60ch] mx-auto leading-relaxed">
+          Recepción y consolidación en Miami. Envíos aéreos semanales bajo régimen de franquicia aduanera: claros, personales y sin sorpresas.
+        </p>
+        <p className="mt-2 text-sm text-white/60 max-w-[65ch] mx-auto leading-relaxed">
+          Hasta 3 envíos anuales por persona, de valor menor a USD 200 y hasta 20 kg por envío, para uso personal. Sujeto a normativa vigente de Aduanas Uruguay.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a
