@@ -76,6 +76,14 @@ export default function Footer() {
                   Términos y Condiciones
                 </a>
               </li>
+              <li>
+                <a
+                  href="/aduanas"
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  Normativa Aduanera
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -84,10 +92,10 @@ export default function Footer() {
           <div className="max-w-7xl mx-auto px-6 py-4 text-xs text-white/60 text-center">
             <div className="block sm:hidden leading-relaxed">
               © {new Date().getFullYear()} LEM-BOX. Todos los derechos reservados.<br />
-              Made with 💻 by <a href="https://devrodri.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-200">Rodrigo Opalo</a>
+              Made with Next.js by <a href="https://devrodri.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-200">Rodrigo Opalo</a>
             </div>
             <div className="hidden sm:block">
-              © {new Date().getFullYear()} LEM-BOX. Todos los derechos reservados. · Made with 💻 by <a href="https://devrodri.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-200">Rodrigo Opalo</a>
+              © {new Date().getFullYear()} LEM-BOX. Todos los derechos reservados. · Made with Next.js by <a href="https://devrodri.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-200">Rodrigo Opalo</a>
             </div>
           </div>
         </div>
