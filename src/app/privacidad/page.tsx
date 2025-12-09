@@ -29,6 +29,7 @@ export default function PrivacidadPage() {
                 <li>Nombre completo, documento de identidad y datos de contacto.</li>
                 <li>Información de registro de cuenta (usuario y credenciales de acceso en forma segura).</li>
                 <li>Datos de cargas recibidas en nuestros depósitos.</li>
+                <li>Datos asociados a operaciones aduaneras (facturas comerciales, valores declarados, información de pago y documentación requerida por autoridades).</li>
                 <li>Actividad de navegación en nuestro sitio (páginas visitadas, búsquedas, IP, navegador).</li>
                 <li>Correspondencia enviada por email, WhatsApp u otros canales.</li>
               </ul>
@@ -43,6 +44,7 @@ export default function PrivacidadPage() {
                 <li>Enviar notificaciones sobre estado de envíos, facturación o soporte.</li>
                 <li>Comunicar promociones y novedades (opcional).</li>
                 <li>Cumplir con obligaciones legales y regulatorias.</li>
+                <li>Preparar declaraciones aduaneras y compartir la información requerida con autoridades competentes para el despacho de envíos.</li>
               </ul>
             </section>
 
@@ -52,12 +54,25 @@ export default function PrivacidadPage() {
               <p>
                 Los datos de los usuarios se tratan de forma confidencial y con medidas de seguridad técnicas y administrativas.
                 No vendemos ni alquilamos información personal. Solo compartimos datos cuando es necesario para operar nuestros
-                servicios, cumplir con normativas legales o resolver disputas.
+                servicios, cumplir con normativas legales, realizar gestiones ante autoridades (incluida la Dirección Nacional de Aduanas y otros organismos como MSP o URSEC cuando corresponda) o resolver disputas.
               </p>
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">4. Almacenamiento y plazos</h2>
+              <h2 className="text-xl font-semibold text-white">4. Compartir datos con terceros y autoridades</h2>
+              <div className="mt-2 h-px w-10 bg-white/10"></div>
+              <p>
+                Podemos compartir cierta información personal con proveedores de servicios (por ejemplo, sistemas de gestión, operadores logísticos, pasarelas de pago) y con autoridades públicas cuando sea necesario para:
+              </p>
+              <ul className="list-disc list-inside marker:text-emerald-300/70 mt-2 space-y-1">
+                <li>Realizar despachos aduaneros y cumplir con la normativa de importación.</li>
+                <li>Responder a requerimientos de la Dirección Nacional de Aduanas u otros organismos de control.</li>
+                <li>Prevenir fraude, abusos o actividades ilícitas relacionadas con nuestros servicios.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold text-white">5. Almacenamiento y plazos</h2>
               <div className="mt-2 h-px w-10 bg-white/10"></div>
               <p>
                 Los paquetes se almacenan gratuitamente por 60 días desde su recepción en Miami. Vencido ese plazo, podrán considerarse
@@ -66,7 +81,7 @@ export default function PrivacidadPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">5. Derechos del usuario</h2>
+              <h2 className="text-xl font-semibold text-white">6. Derechos del usuario</h2>
               <div className="mt-2 h-px w-10 bg-white/10"></div>
               <p>
                 El usuario puede acceder, actualizar o rectificar sus datos, solicitar la baja de su cuenta o pedir la exclusión de listas
@@ -78,7 +93,7 @@ export default function PrivacidadPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">6. Seguridad</h2>
+              <h2 className="text-xl font-semibold text-white">7. Seguridad</h2>
               <div className="mt-2 h-px w-10 bg-white/10"></div>
               <p>
                 Aplicamos estándares de la industria para proteger la información personal. LEM-BOX no almacena contraseñas en texto plano; utilizamos hashing seguro y controles de acceso y cifrado TLS en tránsito. Sin embargo, ningún sistema es infalible y no podemos garantizar seguridad absoluta frente a accesos no autorizados.
@@ -86,7 +101,7 @@ export default function PrivacidadPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">7. Menores de edad</h2>
+              <h2 className="text-xl font-semibold text-white">8. Menores de edad</h2>
               <div className="mt-2 h-px w-10 bg-white/10"></div>
               <p>
                 Nuestros servicios están destinados a personas con capacidad legal para contratar. Los menores solo podrán registrarse con
@@ -95,7 +110,7 @@ export default function PrivacidadPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">8. Modificaciones</h2>
+              <h2 className="text-xl font-semibold text-white">9. Modificaciones</h2>
               <div className="mt-2 h-px w-10 bg-white/10"></div>
               <p>
                 LEM-BOX podrá actualizar esta política y publicará los cambios en este sitio con la fecha de última modificación.
@@ -103,7 +118,7 @@ export default function PrivacidadPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">9. Contacto</h2>
+              <h2 className="text-xl font-semibold text-white">10. Contacto</h2>
               <div className="mt-2 h-px w-10 bg-white/10"></div>
               <p>
                 Para dudas o reclamos relacionados con privacidad de datos, escribinos a{" "}
