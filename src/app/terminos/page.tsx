@@ -22,6 +22,22 @@ export default function TerminosPage() {
             nuestros servicios, el usuario acepta estas condiciones.
           </p>
 
+          <section className="mt-10">
+            <h2 className="text-xl font-semibold text-white">Régimen de franquicia y normativa aduanera</h2>
+            <div className="mt-2 h-px w-10 bg-white/10"></div>
+            <p className="mt-2">
+              Los envíos personales desde Miami hacia Uruguay operan bajo el régimen de franquicia aduanera definido por la Dirección Nacional de Aduanas. 
+              Esto implica que cada persona puede recibir hasta <strong>3 envíos anuales</strong> de <strong>valor menor a USD 200</strong> y de hasta <strong>20 kg</strong> por envío, exclusivamente para <strong>uso personal</strong>. 
+              El valor corresponde únicamente a la mercadería, sin incluir costos de flete.
+            </p>
+            <p className="mt-2">
+              Si el usuario supera estos límites, el envío podrá quedar sujeto al <strong>Régimen Simplificado</strong> (tributo único del 60% hasta USD 200) o al <strong>Régimen General</strong> cuando el valor sea mayor a USD 200, pudiendo requerir la intervención de un despachante de aduana.
+            </p>
+            <p className="mt-2">
+              El titular del medio de pago utilizado para compras debe coincidir con el destinatario del envío. Asimismo, Aduanas controla el uso acumulado de franquicias por persona y puede rechazar o reclasificar envíos cuando se detecten inconsistencias.
+            </p>
+          </section>
+
           <div className="mt-10 space-y-10 text-[15px] leading-relaxed text-emerald-100/85">
             <section>
               <h2 className="text-xl font-semibold text-white">1. Aceptación de los Términos</h2>
@@ -58,6 +74,19 @@ export default function TerminosPage() {
             </section>
 
             <section>
+              <h2 className="text-xl font-semibold text-white">Mercadería prohibida y restringida</h2>
+              <div className="mt-2 h-px w-10 bg-white/10"></div>
+              <p className="mt-2">
+                No está permitido enviar mercancías prohibidas por normativa aduanera o sujetas a impuestos internos especiales (IMESI). 
+                Entre los artículos prohibidos se incluyen, de forma enunciativa: armas, municiones, explosivos, drogas, sustancias peligrosas, cigarrillos electrónicos, tabaco, bebidas alcohólicas, refrescos, perfumes, cosméticos, combustibles, neumáticos, dinero en efectivo y cualquier otro artículo que la autoridad determine.
+              </p>
+              <p className="mt-2">
+                Algunos productos requieren autorizaciones previas como certificados del <strong>MSP</strong> (medicamentos y suplementos específicos) o <strong>URSEC</strong> (dispositivos con radiofrecuencia). 
+                El usuario es responsable de gestionar estos permisos antes del arribo del envío.
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-xl font-semibold text-white">4. Modificaciones de estos Términos</h2>
               <div className="mt-2 h-px w-10 bg-white/10"></div>
               <p>
@@ -86,6 +115,18 @@ export default function TerminosPage() {
             </section>
 
             <section>
+              <h2 className="text-xl font-semibold text-white">Responsabilidades del usuario</h2>
+              <div className="mt-2 h-px w-10 bg-white/10"></div>
+              <ul className="list-disc list-inside marker:text-emerald-300/70 mt-2 space-y-1">
+                <li>Verificar que cuenta con franquicias disponibles antes de realizar compras o envíos.</li>
+                <li>Asegurar que el contenido de sus envíos sea de uso personal y no exceda los límites de valor y peso permitidos.</li>
+                <li>Proveer información veraz respecto a facturas, valores y contenido.</li>
+                <li>Gestionar los permisos especiales requeridos por MSP, URSEC u otros organismos cuando corresponda.</li>
+                <li>Responder en tiempo y forma a solicitudes de documentación por parte de LEM-BOX o de autoridades aduaneras.</li>
+              </ul>
+            </section>
+
+            <section>
               <h2 className="text-xl font-semibold text-white">7. Limitación de responsabilidad</h2>
               <div className="mt-2 h-px w-10 bg-white/10"></div>
               <ul className="list-disc list-inside marker:text-emerald-300/70 mt-2 space-y-1">
@@ -93,6 +134,18 @@ export default function TerminosPage() {
                 <li>No respondemos por información inexacta proporcionada por los usuarios.</li>
                 <li>No garantizamos disponibilidad continua del sitio; pueden existir interrupciones técnicas.</li>
               </ul>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-semibold text-white">Consecuencias por uso indebido</h2>
+              <div className="mt-2 h-px w-10 bg-white/10"></div>
+              <p className="mt-2">
+                El incumplimiento de la normativa aduanera puede derivar en la retención, devolución, decomiso o destrucción de la mercadería por parte de Aduanas. 
+                En casos de subdeclaración, falsedad documental o intento de contrabando, pueden aplicarse multas y acciones legales según la normativa vigente.
+              </p>
+              <p className="mt-2">
+                LEM-BOX no se hace responsable por demoras, impuestos aplicados, rechazos o acciones adoptadas por autoridades externas derivadas del contenido o documentación presentada por el usuario.
+              </p>
             </section>
 
             <section>
