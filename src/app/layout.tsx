@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     languages: {
       "es-UY": "https://lem-box.com.uy",
       "es-AR": "https://lem-box.com.ar",
-      "x-default": "https://lem-box.com",
+      "x-default": "https://portal.lem-box.com",
     },
   },
   themeColor: "#02120F",
