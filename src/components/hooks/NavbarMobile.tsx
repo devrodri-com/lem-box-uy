@@ -144,7 +144,7 @@ export default function NavbarMobile() {
                 </li>
                 <li>
                   <a
-                    href="https://lem-box.com/Tracking/web/#/login"
+                    href="https://lem-box-sistema-v2.vercel.app/acceder"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
@@ -155,7 +155,7 @@ export default function NavbarMobile() {
                 </li>
                 <li>
                   <a
-                    href="https://lem-box.com/Tracking/web/#/register"
+                    href="https://lem-box-sistema-v2.vercel.app/registro"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
