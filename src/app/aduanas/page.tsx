@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { localOnlyAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Normativa Aduanera | LEM-BOX",
   description:
     "Resumen de la normativa aduanera aplicable a envíos personales desde Miami hacia Uruguay: franquicia personal, límites de valor y peso, mercadería prohibida y artículos restringidos.",
+  alternates: localOnlyAlternates("/aduanas"),
 };
 
 export default function AduanasPage() {

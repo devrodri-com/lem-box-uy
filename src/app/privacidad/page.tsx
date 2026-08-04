@@ -1,12 +1,13 @@
 // src/app/privacidad/page.tsx
 import type { Metadata } from "next";
+import { regionalAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Política de Privacidad | LEM-BOX",
   description:
     "Conocé cómo LEM-BOX protege y utiliza tus datos personales. Transparencia y seguridad en la gestión de tu información.",
   robots: { index: true },
-  alternates: { canonical: "/privacidad" },
+  alternates: regionalAlternates("/privacidad"),
 };
 
 export default function PrivacidadPage() {

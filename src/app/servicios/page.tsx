@@ -1,10 +1,12 @@
 // src/app/servicios/page.tsx
 import type { Metadata } from "next";
+import { regionalAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Servicios | LEM-BOX",
   description:
     "Servicios logísticos integrales en EE.UU. y envíos personales desde Miami a Uruguay. Infraestructura en Miami, fulfillment 3PL y despachos a Uruguay bajo régimen de franquicia aduanera vigente y dentro de EE.UU.",
+  alternates: regionalAlternates("/servicios"),
 };
 
 export default function ServiciosPage() {

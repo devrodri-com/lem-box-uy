@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import Script from "next/script";
 import Analytics from "@/components/Analytics";
 import { Suspense } from "react";
+import { regionalAlternates } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,14 +29,7 @@ export const metadata: Metadata = {
   },
   description:
     "Comprás en EE.UU. y recibís en Uruguay. Recepción y consolidación con fotos. Salidas semanales desde Miami.",
-  alternates: {
-    canonical: "https://lem-box.com.uy",
-    languages: {
-      "es-UY": "https://lem-box.com.uy",
-      "es-AR": "https://lem-box.com.ar",
-      "x-default": "https://portal.lem-box.com",
-    },
-  },
+  alternates: regionalAlternates("/"),
   themeColor: "#02120F",
   manifest: "/manifest.webmanifest",
   icons: {
