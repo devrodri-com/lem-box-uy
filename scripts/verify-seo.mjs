@@ -24,6 +24,8 @@ const X_DEFAULT_URL = "https://lem-box.com/acceder";
 const ROUTES = ["/", "/servicios", "/privacidad", "/terminos"];
 // Sin equivalente regional en Argentina: canonical propia y ningún hreflang.
 const LOCAL_ONLY_ROUTES = ["/aduanas"];
+// Todas las páginas indexables reales, tengan o no equivalente regional.
+const ALL_INDEXABLE_ROUTES = [...ROUTES, ...LOCAL_ONLY_ROUTES];
 
 // Next normaliza la raíz sin barra final al resolverla contra metadataBase.
 // "https://host" y "https://host/" son el mismo recurso (RFC 3986), y ambos
@@ -73,6 +75,38 @@ function checkPerRouteAlternates() {
   }
 }
 
+// `openGraph` se reemplaza igual que `alternates`: sin declaración propia,
+// toda subruta hereda el og:url de la portada. Cada página indexable real
+// —tenga o no equivalente regional— tiene que declarar el suyo.
+function checkPerRouteOpenGraph() {
+  for (const route of ALL_INDEXABLE_ROUTES) {
+    const file = route === "/" ? "src/app/layout.tsx" : `src/app${route}/page.tsx`;
+    if (!read(file).includes(`regionalOpenGraph("${route}")`)) {
+      fail("route-og-url", `${file} debe declarar regionalOpenGraph("${route}") o hereda el og:url de la portada`);
+    }
+  }
+}
+
+// El sitemap tiene que derivarse de las rutas reales, sin fragments ni
+// query strings hardcodeados en la fuente.
+function checkSitemapSource() {
+  const sm = read("src/app/sitemap.ts");
+  if (!sm.includes("ALL_INDEXABLE_ROUTES") || !sm.includes("SITE_URL")) {
+    fail("sitemap-source", "sitemap.ts debe derivarse de ALL_INDEXABLE_ROUTES y SITE_URL");
+  }
+  if (stripComments(sm).includes("#")) {
+    fail("sitemap-fragments", "el sitemap no debe publicar anclas: duplican la home");
+  }
+  // Busca "?" solo dentro de literales de string, no en operadores ternarios.
+  const stringLiterals = [...stripComments(sm).matchAll(/`[^`]*`|"[^"]*"|'[^']*'/g)].map((m) => m[0]);
+  if (stringLiterals.some((s) => s.includes("?"))) {
+    fail("sitemap-query", "el sitemap no debe publicar query strings");
+  }
+}
+
+const stripComments = (src) =>
+  src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
+
 // El alternate tiene que conservar el pathname: la portada nunca es el
 // equivalente regional de /servicios ni de las páginas legales.
 function checkPathnameEquivalence() {
@@ -87,10 +121,20 @@ function checkPathnameEquivalence() {
 const attr = (tag, name) =>
   tag.match(new RegExp(`${name}="([^"]*)"`, "i"))?.[1] ?? null;
 
+// Next puede emitir la metadata en streaming, después de </head>, en rutas
+// dinámicas: el parseo va sobre el documento completo salvo los <script>,
+// donde el payload RSC reitera los mismos tags en JSON escapado.
+const markup = (html) => html.replace(/<script[\s\S]*?<\/script>/gi, "");
+
 const linksOf = (html, rel) =>
-  [...html.matchAll(/<link\b[^>]*>/gi)]
+  [...markup(html).matchAll(/<link\b[^>]*>/gi)]
     .map((m) => m[0])
     .filter((t) => attr(t, "rel")?.toLowerCase() === rel);
+
+const metasOf = (html, prop) =>
+  [...markup(html).matchAll(/<meta\b[^>]*>/gi)]
+    .map((m) => m[0])
+    .filter((t) => (attr(t, "property") || attr(t, "name") || "").toLowerCase() === prop);
 
 async function get(url) {
   const res = await fetch(url, { redirect: "follow" });
@@ -98,7 +142,7 @@ async function get(url) {
 }
 
 async function checkLive(base, peer) {
-  for (const route of [...ROUTES, ...LOCAL_ONLY_ROUTES]) {
+  for (const route of ALL_INDEXABLE_ROUTES) {
     const url = `${base}${route === "/" ? "/" : route}`;
     const { res, body } = await get(url);
     if (!res.ok) {
@@ -109,6 +153,15 @@ async function checkLive(base, peer) {
     const canonical = linksOf(body, "canonical").map((t) => attr(t, "href"))[0];
     if (canonical !== abs(SITE_URL, route)) {
       fail("live-canonical", `${route}: canonical ${canonical}, esperado ${abs(SITE_URL, route)}`);
+    }
+
+    const ogUrlTags = metasOf(body, "og:url");
+    if (ogUrlTags.length > 1) {
+      fail("live-og-url-duplicate", `${route}: ${ogUrlTags.length} og:url, se esperaba 1`);
+    }
+    const ogUrl = ogUrlTags[0] ? attr(ogUrlTags[0], "content") : null;
+    if (ogUrl !== abs(SITE_URL, route)) {
+      fail("live-og-url", `${route}: og:url ${ogUrl}, esperado ${abs(SITE_URL, route)}`);
     }
 
     const alts = Object.fromEntries(
@@ -145,7 +198,28 @@ async function checkLive(base, peer) {
     }
   }
 
+  await checkSitemapLive(base);
   await checkReciprocity(peer ?? AR_SITE_URL);
+}
+
+async function checkSitemapLive(base) {
+  const { res, body } = await get(`${base}/sitemap.xml`);
+  if (!res.ok) return fail("live-sitemap", `${base}/sitemap.xml devolvió ${res.status}`);
+
+  const locs = [...body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  // El sitemap construye la URL literal `${SITE_URL}${route}`, sin pasar por
+  // metadataBase: a diferencia de canonical/alternates, la raíz sí lleva "/".
+  const expected = new Set(ALL_INDEXABLE_ROUTES.map((r) => `${SITE_URL}${r}`));
+
+  if (locs.some((l) => l.includes("#"))) fail("live-sitemap-fragments", "el sitemap contiene anclas");
+  if (locs.some((l) => l.includes("?"))) fail("live-sitemap-query", "el sitemap contiene query strings");
+  if (new Set(locs).size !== locs.length) fail("live-sitemap-duplicates", "el sitemap tiene URLs duplicadas");
+
+  const extra = locs.filter((l) => !expected.has(l));
+  if (extra.length) fail("live-sitemap-noncanonical", `URL no indexable en el sitemap: ${extra.join(", ")}`);
+
+  const missing = [...expected].filter((u) => !locs.includes(u));
+  if (missing.length) fail("live-sitemap-missing", `rutas indexables ausentes del sitemap: ${missing.join(", ")}`);
 }
 
 /** Cada alternate es-AR tiene que devolver el hreflang es-UY inverso. */
@@ -171,7 +245,9 @@ async function checkReciprocity(peerBase) {
 
 checkContractModule();
 checkPerRouteAlternates();
+checkPerRouteOpenGraph();
 checkPathnameEquivalence();
+checkSitemapSource();
 
 const urlIndex = process.argv.indexOf("--url");
 if (urlIndex !== -1) {
