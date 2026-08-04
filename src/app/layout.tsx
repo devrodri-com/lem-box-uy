@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import Script from "next/script";
 import Analytics from "@/components/Analytics";
 import { Suspense } from "react";
-import { regionalAlternates } from "@/lib/seo";
+import { regionalAlternates, regionalOpenGraph } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,13 +44,10 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    type: "website",
-    url: "/",
-    siteName: "LEM-BOX Uruguay",
+    ...regionalOpenGraph("/"),
     title: "LEM-BOX Uruguay — Envíos rápidos desde Miami",
     description:
       "Comprás en EE.UU. y recibís en Uruguay. Recepción y consolidación con fotos. Salidas semanales desde Miami.",
-    images: [{ url: "/og-lem-box-uy.jpg?v=3", width: 1200, height: 630, alt: "LEM-BOX Uruguay" }],
   },
   twitter: {
     card: "summary_large_image",
